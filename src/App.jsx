@@ -1,5 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { increment, reduction, addNumber } from "./store/reducers/count";
+import {
+  increment,
+  reduction,
+  addNumber,
+  resetNum,
+} from "./store/reducers/count";
 import { Button, Stack, Typography } from "@mui/material";
 
 function App() {
@@ -12,23 +17,34 @@ function App() {
 
   return (
     <>
-      <Stack direction="row" spacing={2}>
-        <Typography variant="h1">{count}</Typography>
-
-        <Button variant="contained" onClick={() => dispatch(increment())}>
-          +
-        </Button>
-        <Button
-          style={{ marginLeft: "5px", marginRight: "5px" }}
-          variant="contained"
-          onClick={() => dispatch(reduction())}
-        >
-          -
-        </Button>
-        <Button variant="contained" onClick={random}>
-          Random
-        </Button>
-      </Stack>
+      <div style={{ margin: "0 auto", display: "flex" }}>
+        <div style={{ margin: "0 auto" }}>
+          <Stack direction="row" spacing={2}>
+            <Button variant="contained" onClick={() => dispatch(increment())}>
+              +
+            </Button>
+            <Button
+              style={{ marginLeft: "5px", marginRight: "5px" }}
+              variant="contained"
+              onClick={() => dispatch(reduction())}
+            >
+              -
+            </Button>
+            <Button variant="contained" onClick={random}>
+              Random
+            </Button>
+            <Button variant="contained" onClick={() => dispatch(resetNum())}>
+              Reset
+            </Button>
+          </Stack>
+          <Typography
+            variant="h1"
+            style={{ margin: "0 auto", position: "absolute", right: "730px" }}
+          >
+            {count}
+          </Typography>
+        </div>
+      </div>
     </>
   );
 }
